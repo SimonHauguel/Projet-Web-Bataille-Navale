@@ -1,0 +1,19 @@
+{
+  "name": "projet-web-bataille-navale",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimonHauguel/Projet-Web-Bataille-Navale.git"
+  },
+  "author": "SimonHauguel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimonHauguel/Projet-Web-Bataille-Navale/issues"
+  },
+  "homepage": "https://github.com/SimonHauguel/Projet-Web-Bataille-Navale#readme"
+}
