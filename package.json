@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/SimonHauguel/Projet-Web-Bataille-Navale/issues"
   },
-  "homepage": "https://github.com/SimonHauguel/Projet-Web-Bataille-Navale#readme"
+  "homepage": "https://github.com/SimonHauguel/Projet-Web-Bataille-Navale#readme",
+  "dependencies": {
+    "path": "^0.12.7",
+    "socket.io": "^4.4.1"
+  }
 }
