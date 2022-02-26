@@ -6,5 +6,8 @@ let event_plateau = (function() {
     
     this.style.backgroundColor = "#E01223"; 
     this.style.backgroundImage = "url('img/croix.png')";
+    this.style.backgroundSize = "contain";
+    this.style.backgroundRepeat = "no-repeat";
     console.log(this);
+    
 });
