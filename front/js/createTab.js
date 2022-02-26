@@ -15,6 +15,7 @@ for (let i = 0; i < 10; i++) {
         let td = document.createElement('td');
         tr.appendChild(td);
         td.textContent = 'cul';
+        td.addEventListener('click',event_plateau);
     }
 }
 
