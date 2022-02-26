@@ -1,0 +1,1 @@
+//affichage des états des cases

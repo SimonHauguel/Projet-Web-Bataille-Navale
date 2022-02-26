@@ -14,7 +14,7 @@ for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
         let td = document.createElement('td');
         tr.appendChild(td);
-        td.textContent = 'cul';
+        //td.textContent = 'cul';
         td.addEventListener('click',event_plateau);
     }
 }
