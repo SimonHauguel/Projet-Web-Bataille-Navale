@@ -4,10 +4,12 @@ let event_plateau = (function() {
     //si bon choix d'arme
     this.textContent = "";
     
-    this.style.backgroundColor = "#E01223"; 
+    //this.style.backgroundColor = "#E01223"; 
     this.style.backgroundImage = "url('img/croix.png')";
     this.style.backgroundSize = "contain";
     this.style.backgroundRepeat = "no-repeat";
+    this.style.backgroundPosition = "center";
+    
     console.log(this);
     
 });
