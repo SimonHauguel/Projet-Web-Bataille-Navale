@@ -5,6 +5,8 @@
 let table = document.createElement('table');
 // taille de la grille
 let tabSize = 10;
+// numérotation des cases
+let numberCase = 0;
 
 for (let i = 0; i < tabSize; i++) {
 
@@ -16,6 +18,8 @@ for (let i = 0; i < tabSize; i++) {
         let td = document.createElement('td');
         tr.appendChild(td);
         td.addEventListener('click', event_plateau);
+        td.setAttribute("id",numberCase);
+        numberCase++;
     }
 }
 document.getElementById('body').appendChild(table);
