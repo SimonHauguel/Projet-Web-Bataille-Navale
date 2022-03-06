@@ -22,4 +22,5 @@ for (let i = 0; i < tabSize; i++) {
         numberCase++;
     }
 }
-document.getElementById('body').appendChild(table);
+// document.getElementById('body').appendChild(table);
+document.getElementById('Tab').appendChild(table);
