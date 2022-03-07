@@ -9,9 +9,10 @@ let numberOfWeapons = 4;
 
 for (let i = 0; i < numberOfWeapons; i++){
     let tdWeaponTable = document.createElement('td');
+    tdWeaponTable.setAttribute("class", "weaponCases");
     tdWeaponTable.setAttribute("id",attributeTable[i]);
     trWeaponTable.appendChild(tdWeaponTable);
 }
 weaponTable.appendChild(trWeaponTable);
-document.getElementById('body').appendChild(weaponTable);
+document.getElementById('weapon').appendChild(weaponTable);
 

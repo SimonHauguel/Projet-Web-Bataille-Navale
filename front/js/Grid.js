@@ -21,6 +21,7 @@ class Grid {
                 tr.appendChild(td);
                 //numérotation des cases
                 td.setAttribute("id", this.numberCase);
+                td.setAttribute("class", "cases");
                 this.numberCase++;
             }
         }
