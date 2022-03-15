@@ -13,7 +13,7 @@ for(let oneCase of casesOfGrid){
 }
 /*--------------------Mon plateau---------------- */
 /*----------------------------------------------- */
-//création du plateau adversaires
+//création de mon tableau
 let friendlyGrid = new Grid(10,0);
 friendlyGrid = friendlyGrid.generate();
 document.getElementById('friendly').appendChild(friendlyGrid);
