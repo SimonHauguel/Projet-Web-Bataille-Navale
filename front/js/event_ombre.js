@@ -1,4 +1,4 @@
-// radar torpille bombe
+// variable globale qui change en fonction de la dernière arme seléctionnée
 let arme_selectionnée = "bombe";
 
 
@@ -18,28 +18,68 @@ let event_ombre = (function() {
     if (arme_selectionnée == "bombe"){
 
         this.style.backgroundColor = "#ffe6b3";
+        this.style.opacity = "0.5";
         if (id > 9){
             let newid = id-10;
             let element = document.getElementById(newid);
             element.style.backgroundColor = "#ffe6b3";
+            element.style.opacity = "0.5";
         }
     
         if (id < 90){
             let newid = id+10;
             let element = document.getElementById(newid);
             element.style.backgroundColor = "#ffe6b3";
+            element.style.opacity = "0.5";
         }
     
-        if (unite > 0 && id > 0){
+        if ((unite > 0 || (id > 0 && id < 10))){
             let newid = id-1;
             let element = document.getElementById(newid);
             element.style.backgroundColor = "#ffe6b3";
+            element.style.opacity = "0.5";
         }
     
-        if (unite < 9 && id !=9){
+        if (unite < 9  ||  id <9){
             let newid = id+1;
             let element = document.getElementById(newid);
             element.style.backgroundColor = "#ffe6b3";
+            element.style.opacity = "0.5";
+        }
+
+        
+    }
+
+    if (arme_selectionnée == "radar"){
+
+        this.style.backgroundColor = "#ffe6b3";
+        this.style.opacity = "0.5";
+        if (id > 9){
+            let newid = id-10;
+            let element = document.getElementById(newid);
+            element.style.backgroundColor = "#ffe6b3";
+            element.style.opacity = "0.5";
+        }
+    
+        if (id < 90){
+            let newid = id+10;
+            let element = document.getElementById(newid);
+            element.style.backgroundColor = "#ffe6b3";
+            element.style.opacity = "0.5";
+        }
+    
+        if ((unite > 0 || (id > 0 && id < 10))){
+            let newid = id-1;
+            let element = document.getElementById(newid);
+            element.style.backgroundColor = "#ffe6b3";
+            element.style.opacity = "0.5";
+        }
+    
+        if (unite < 9  ||  id <9){
+            let newid = id+1;
+            let element = document.getElementById(newid);
+            element.style.backgroundColor = "#ffe6b3";
+            element.style.opacity = "0.5";
         }
     }
     
@@ -65,13 +105,13 @@ let event_ombre_fin = (function(){
         element.style.backgroundColor = "";
     }
 
-    if (unite > 0 && id > 0){
+    if ((unite > 0 || (id > 0 && id < 10))){
         let newid = id-1;
         let element = document.getElementById(newid);
         element.style.backgroundColor = "";
     }
 
-    if (unite < 9 && id !=9){
+    if (unite < 9  ||  id < 9){
         let newid = id+1;
         let element = document.getElementById(newid);
         element.style.backgroundColor = "";
