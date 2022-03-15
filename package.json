@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/SimonHauguel/Projet-Web-Bataille-Navale#readme",
   "dependencies": {
+    "express": "^4.17.3",
     "my-sql": "^1.2.15",
     "path": "^0.12.7",
     "socket.io": "^4.4.1"
