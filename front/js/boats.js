@@ -14,7 +14,7 @@ for (let i = 0; i < boatIdTable.length; i++){
 }
 boatTable.appendChild(trBoatTable);
 document.getElementById('boat').appendChild(boatTable);
-/*-----------------------apllication des images-----------------------*/
+/*-----------------------application des images-----------------------*/
 let klein = document.getElementById("klein");
 klein.style.backgroundImage = "url(img/boats/celui-que-personne-aime.png)";
 

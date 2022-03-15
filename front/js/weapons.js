@@ -13,7 +13,7 @@ for (let i = 0; i < weaponIdTable.length; i++){
 }
 weaponTable.appendChild(trWeaponTable);
 document.getElementById('weapon').appendChild(weaponTable);
-/*-----------------------apllication des images-----------------------*/
+/*-----------------------application des images-----------------------*/
 let radar = document.getElementById("radar");
 radar.style.backgroundImage = "url(img/weapons/radar.png)";
 
