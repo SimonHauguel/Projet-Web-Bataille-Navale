@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-table,tr,td{border-width:1px;border-style: solid;border-color: black;  }
-table {border-collapse: collapse;}
-.weaponCases,.boatCases {height:50px;width:65px;text-align: center;}
-.cases {width:50px;height:50px;text-align:center;}
-td:hover {background-color: #ffe6b3;opacity: 0.5;}
-=======
 table tr td{
     border-width:1px;border-style: solid;border-color: black;  }
 table {border-collapse: collapse;}
@@ -13,4 +6,3 @@ table {border-collapse: collapse;}
 
 
 /* td:hover {background-color: #ffe6b3;opacity: 0.5;} */
->>>>>>> 9e71fdd56bfda09722828e73b58a946f0698bbe2
