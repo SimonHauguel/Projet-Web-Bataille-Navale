@@ -23,7 +23,6 @@ class torpedo extends Boat{
 class submarine extends Boat{
 
      constructor(){
-
         super("submarine","sous-marrin",3) ;
      }
 }
@@ -31,7 +30,6 @@ class submarine extends Boat{
 class destroyer extends Boat{
 
     constructor(){
-
        super("destroyer","contre-torpilleur",3) ;
     }
 }
@@ -39,7 +37,6 @@ class destroyer extends Boat{
 class cruiser extends Boat{
 
     constructor(){
-
        super("cruiser","croiseur",4) ;
     }
 }
@@ -47,7 +44,6 @@ class cruiser extends Boat{
 class aircraftCarrier  extends Boat{
 
     constructor(){
-
        super("aircraft-carrier","porte avion",5) ;
     }
 }

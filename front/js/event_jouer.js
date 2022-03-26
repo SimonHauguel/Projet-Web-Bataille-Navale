@@ -8,6 +8,9 @@ let event_jouer = (function()  {
     element.style.display = "none";
     element = document.getElementsByClassName("btn btn-outline-dark");
     element[0].style.display = "none";
+
+    socket.emit("wannaplay", socket.id);
+    
 })
 let bouton = document.getElementsByClassName("btn btn-outline-dark");
 bouton[0].addEventListener('click', event_jouer);
