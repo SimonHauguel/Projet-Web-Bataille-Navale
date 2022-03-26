@@ -1,18 +1,20 @@
 /*----------création du tableau des bateaux----------------- */
 /*-------------------------------------------- */
 let boatTable = document.createElement("table");
-let trBoatTable = document.createElement("tr");
+
 // tableau contenant les id des cases du tableau des bateaux
 let boatIdTable = ["klein","croiseur","torpilleur","contre_torpilleur","porte_avion"];
 
 
 for (let i = 0; i < boatIdTable.length; i++){
+    let trBoatTable = document.createElement("tr");
     let tdBoatTable = document.createElement('td');
     tdBoatTable.setAttribute("class", "boatCases");
     tdBoatTable.setAttribute("id",boatIdTable[i]);
     trBoatTable.appendChild(tdBoatTable);
+    boatTable.appendChild(trBoatTable);
 }
-boatTable.appendChild(trBoatTable);
+
 document.getElementById('boat').appendChild(boatTable);
 /*-----------------------application des images-----------------------*/
 let klein = document.getElementById("klein");
