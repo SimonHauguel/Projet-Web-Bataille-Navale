@@ -1,7 +1,3 @@
-// variable globale qui change en fonction de la dernière arme seléctionnée
-let arme_selectionnée = "radar";
-
-
 // event qui affiche "l'ombre" du prochain coup
 let event_ombre = (function() {
 
@@ -13,7 +9,7 @@ let event_ombre = (function() {
     id = parseInt(id,10);
 
     //si bon choix d'arme
-    if(arme_selectionnée == "missile"){
+    if(arme_selectionnée == "missile" || arme_selectionnée == "torpille"){
 
         this.style.backgroundColor = "#ffe6b3";
         this.style.opacity = "0.5";

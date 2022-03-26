@@ -1,5 +1,3 @@
-
-
 let event_jouer = (function()  {
 
     let element = document.getElementById("opposite");
@@ -8,6 +6,10 @@ let event_jouer = (function()  {
     element.style.display = "flex";
     element = document.getElementById("boat");
     element.style.display = "none";
+    element = document.getElementsByClassName("btn btn-outline-dark");
+    element[0].style.display = "none";
+
+    
 })
 let bouton = document.getElementsByClassName("btn btn-outline-dark");
 bouton[0].addEventListener('click', event_jouer);
