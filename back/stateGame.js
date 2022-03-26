@@ -1,4 +1,4 @@
-import { EventGame, Weapon, BuildContextEvent } from "events";
+const Events = require("./events");
 
 const SIZE = 10;
 
@@ -24,10 +24,11 @@ const toCoordonate = n => Coordonate(
     )
 
 
-class FrontGame {
+module.exports.BackGame = class {
 
-    constructor(name){
-        this.name = name;
+    constructor(firstSocket, secondSocket){
+        this.firsts = firstSocket;
+        this.seconds = secondSocket;
         this.ownState = newState();
         this.otherState = newState();
         this.radar = 1;
@@ -38,8 +39,8 @@ class FrontGame {
     
     runEvent(event){
         switch (event.name) {
-            case EventGame.WEAPON: this.runEventWeapon(event.value.weapon, event.value.context)
-            case EventGame.HIT: {
+            case Events.EventGame.WEAPON: this.runEventWeapon(event.value.weapon, event.value.context)
+            case Events.EventGame.HIT: {
                 // TODO
             } 
         }
@@ -48,14 +49,14 @@ class FrontGame {
 
     runEventWeapon(weapon, location){
         switch (weapon) {
-            case Weapon.Rocket:
+            case Events.Weapon.Rocket:
                 if (this.rocket) { 
                     this.rocket -= 1; 
                     // TODO
                 }
-            case Weapon.Radar:   console.log("Radar Launched !")   ; break;
-            case Weapon.Torpedo: console.log("Torpedo Launched !") ; break;
-            case Weapon.Bomb:    console.log("Bomb Launched !")    ; break;
+            case Events.Weapon.Radar:   console.log("Radar Launched !")   ; break;
+            case Events.Weapon.Torpedo: console.log("Torpedo Launched !") ; break;
+            case Events.Weapon.Bomb:    console.log("Bomb Launched !")    ; break;
             default: console.error("Unknow Weapon") 
         }
     }
