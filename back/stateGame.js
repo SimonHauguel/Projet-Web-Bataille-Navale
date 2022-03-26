@@ -1,5 +1,6 @@
 const Events = require("./events");
 
+
 const SIZE = 10;
 
 const newState = () => {
@@ -26,7 +27,8 @@ const toCoordonate = n => Coordonate(
 
 module.exports.BackGame = class {
 
-    constructor(firstSocket, secondSocket){
+    constructor(firstSocket, secondSocket, io){
+        this.io = io;
         this.firsts = firstSocket;
         this.seconds = secondSocket;
         this.ownState = newState();
@@ -35,45 +37,13 @@ module.exports.BackGame = class {
         this.rocket = 1;
         this.torpedo = 1;
         this.bomb = 1;
-    }
-    
-    runEvent(event){
-        switch (event.name) {
-            case Events.EventGame.WEAPON: this.runEventWeapon(event.value.weapon, event.value.context)
-            case Events.EventGame.HIT: {
-                // TODO
-            } 
-        }
+        this.turn = 0;
     }
 
+    useRadar(location) {
+        if (!this.radar) return;
 
-    runEventWeapon(weapon, location){
-        switch (weapon) {
-            case Events.Weapon.Rocket:
-                if (this.rocket) { 
-                    this.rocket -= 1; 
-                    // TODO
-                }
-            case Events.Weapon.Radar:   console.log("Radar Launched !")   ; break;
-            case Events.Weapon.Torpedo: console.log("Torpedo Launched !") ; break;
-            case Events.Weapon.Bomb:    console.log("Bomb Launched !")    ; break;
-            default: console.error("Unknow Weapon") 
-        }
-    }
 
-    render(listOfOwnersTab, listOfOthersTab) {
-
-        if (listOfOwnersTab.length != 100 || listOfOwnersTab.length != listOfOthersTab.length) { 
-            console.log("Error : Length MissMatch")
-            return null
-        }
-
-        for (let i = 0; i < SIZE * SIZE; i++) {
-            const coo = toCoordonate(i);
-            listOfOwnersTab[i].innerText = this.ownState[coo.getX()][coo.getY()] ? "O" : "X";
-            listOfOthersTab[i].innerText = this.otherState[coo.getX()][coo.getY()] ? "O" : "X";
-        }
-        
     }
 
 }

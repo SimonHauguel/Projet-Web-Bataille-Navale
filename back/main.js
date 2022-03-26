@@ -6,18 +6,17 @@ const path    = require('path');
 const sqlite  = require('sqlite3');
 
 const BackGame = require('./stateGame.js').BackGame;
+const Events = require('./events.js')
 
 const withDir = rest => __dirname + rest;
 const pure = rest => path.resolve(withDir(rest));
+let game = undefined;
 let users = []
-
-isNotInUsers = n => users.every(e => e !== n)
 
 app.use(express.static(withDir('/../front/')));
 
 app.get('/', (req, res) => {
     res.sendFile(pure('/../front/index.html'));
-    console.log("test")
 });
 
 app.get('/submit', (req, res) => {
@@ -25,20 +24,10 @@ app.get('/submit', (req, res) => {
 });
 
 io.on('connection', socket => {
-    
-    let game = undefined;
-
-    console.log(socket.broadcast)
-    socket.on('wannaplay', socket => {
-
-        users.push(socket.id)
-        if (users.length == 2) {
-            game = new BackGame(users[0], users[1])
-            users = [];
-            console.log(game)
-        }
-    })
-
+    users.push(socket.id)
+    if (users.length == 2) {
+        socket.emit('normal', 1)
+    }
 });
 
 
