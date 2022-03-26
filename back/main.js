@@ -17,6 +17,7 @@ app.use(express.static(withDir('/../front/')));
 
 app.get('/', (req, res) => {
     res.sendFile(pure('/../front/index.html'));
+    console.log("test")
 });
 
 app.get('/submit', (req, res) => {
