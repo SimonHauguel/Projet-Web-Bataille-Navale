@@ -9,6 +9,7 @@ let event_jouer = (function()  {
     element = document.getElementsByClassName("btn btn-outline-dark");
     element[0].style.display = "none";
 
+    socket.emit("wannaplay", socket.id);
     
 })
 let bouton = document.getElementsByClassName("btn btn-outline-dark");
