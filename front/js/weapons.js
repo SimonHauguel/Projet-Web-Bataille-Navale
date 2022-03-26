@@ -10,6 +10,7 @@ for (let i = 0; i < weaponIdTable.length; i++){
     let tdWeaponTable = document.createElement("td");
     tdWeaponTable.setAttribute("class", "weaponCases");
     tdWeaponTable.setAttribute("id",weaponIdTable[i]);
+    tdWeaponTable.addEventListener("click", new_weapon);
     trWeaponTable.appendChild(tdWeaponTable);
     weaponTable.appendChild(trWeaponTable);
 }
