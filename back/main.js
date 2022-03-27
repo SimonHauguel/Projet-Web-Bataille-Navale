@@ -5,6 +5,8 @@ const io      = require('socket.io')(http);
 const path    = require('path');
 const sqlite  = require('sqlite3');
 
+//const BackGame = require('../front/js/stateGame.js').BackGame;
+//const Events = require('../front/js/events.js')
 
 const withDir = rest => __dirname + rest;
 const pure = rest => path.resolve(withDir(rest));
