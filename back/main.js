@@ -26,10 +26,9 @@ app.get('/submit', (req, res) => {
 io.on('connection', socket => {
     users.push(socket.id)
     if (users.length == 2) {
-        socket.emit('normal', 1)
+        socket.emit('gamefound')
     }
-});
-
+}); 
 
 http.listen(4200, () => {
     console.log('Serveur Run on Port 4200');

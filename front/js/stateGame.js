@@ -1,6 +1,5 @@
 const Events = require("./events");
 
-
 const SIZE = 10;
 
 const newState = () => {
@@ -27,17 +26,12 @@ const toCoordonate = n => Coordonate(
 
 module.exports.BackGame = class {
 
-    constructor(firstSocket, secondSocket, io){
-        this.io = io;
-        this.firsts = firstSocket;
-        this.seconds = secondSocket;
-        this.ownState = newState();
-        this.otherState = newState();
+    constructor(){
+        this.state = newState();
         this.radar = 1;
         this.rocket = 1;
         this.torpedo = 1;
         this.bomb = 1;
-        this.turn = 0;
     }
 
     useRadar(location) {

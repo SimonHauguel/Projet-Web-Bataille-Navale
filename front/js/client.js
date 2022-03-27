@@ -1,9 +1,10 @@
 const socket = io();
+const tohide = document.getElementById('container')
+const gameState = require('./stateGame.js')
 
 let game = undefined;
 
 socket.on('wannaplay', socketid => {
-    console.log("prout")
     if (users.length == 2) {
         fir = [0]
         sec = users[1]
@@ -11,4 +12,4 @@ socket.on('wannaplay', socketid => {
     }
 })
 
-socket.on('normal', socket => console.log("test") )
+socket.on('gamefound', () => tohide.hidden = true)
