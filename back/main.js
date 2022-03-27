@@ -5,12 +5,9 @@ const io      = require('socket.io')(http);
 const path    = require('path');
 const sqlite  = require('sqlite3');
 
-const BackGame = require('./stateGame.js').BackGame;
-const Events = require('./events.js')
 
 const withDir = rest => __dirname + rest;
 const pure = rest => path.resolve(withDir(rest));
-let game = undefined;
 let users = []
 
 app.use(express.static(withDir('/../front/')));
@@ -26,7 +23,7 @@ app.get('/submit', (req, res) => {
 io.on('connection', socket => {
     users.push(socket.id)
     if (users.length == 2) {
-        socket.emit('gamefound')
+        io.sockets.emit('gamefound')
     }
 }); 
 
