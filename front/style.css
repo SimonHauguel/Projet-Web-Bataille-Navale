@@ -1,6 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+
+body {
+    margin: 0;
+}
+
+.col-3{
+    float: left;
+    width: 27.33%;
+    margin: 40px 3%;
+    position: relative;
+}
+
+input[type="text"] {
+    font-size: 18px;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.effect-2 {
+    border: 0;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.effect-2 ~ .focus-border{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #4caf50;
+    transition: 0.4s;
+}
+
+.effect-2:focus ~ .focus-border{
+    width: 100%; 
+    transition: 0.4s;
+    left: 0;
+}
+
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+.popup {
+    font-family: 'Rubik', sans-serif;
+    font-style: italic;
+}
+
+#board {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    
+}
+
+
+
+
+body {
+    background-color: #EDEDED;
+}
+
+
 .tile {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     background-color: #3788ae;
     border: 1px;
     border-style: solid;
@@ -13,10 +88,100 @@
     justify-content: space-around;
 }
 
-.fire {
-    color: rgb(0, 0, 0);
+.fire { color: rgb(0, 0, 0); }
+
+.circle { color: rgb(255, 255, 255); }
+
+.button-30 {
+  align-items: center;
+  appearance: none;
+  border-radius: 4px;
+  border-width: 0;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
 }
 
-.circle {
-    color: rgb(255, 255, 255);
+.button-30:hover {
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  transform: translateY(2px);
+}
+
+.bwhite { 
+    background-color: #FCFCFD;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+}
+
+.bwhite:focus { box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset; }
+
+.bwhite:hover { box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset; }
+
+.bwhite:active { box-shadow: #D6D6E7 0 3px 7px inset; }
+
+.byellow { 
+    background-color: rgb(245, 255, 159);
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#fdff73 0 -3px 0 inset;
+}
+
+.byellow:focus { box-shadow: #fdff73 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #fdff73 0 -3px 0 inset; }
+
+.byellow:hover { box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #fdff73 0 -3px 0 inset; }
+
+.byellow:active { box-shadow: #fdff73 0 3px 7px inset; }
+
+.bgrey { 
+    background-color: rgb(177, 177, 177);
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#818181 0 -3px 0 inset;
+}
+
+.bgreen {
+    background-color: #9FE293;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#87db65 0 -3px 0 inset;
+}
+
+.bgreen:focus { box-shadow: #87db65 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #87db65 0 -3px 0 inset; }
+
+.bgreen:hover { box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #87db65 0 -3px 0 inset; }
+
+.bgreen:active { box-shadow: #87db65 0 3px 7px inset; }
+
+
+#button, #sens {
+    width: 150px;
+    height: 150px;
+}
+
+#button {
+    position: absolute;
+    left: 20%;
+    top: 65%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#sens {
+    position: absolute;
+    left: 20%;
+    top: 35%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }

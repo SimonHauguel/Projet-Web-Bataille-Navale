@@ -4,12 +4,17 @@ const otherboard = document.getElementById('otherboard')
 const bomb = document.getElementById('bomb')
 const torpille = document.getElementById('torpille')
 
+const inputMessage = document.getElementById("inputMessage");
+
 const allColors = [ '#FFAF58', '#58FF5E', '#FF58E0', '#FF586C', '#FFF758']
 
 const boardPassed = document.location.search.slice(1)
 const SIZE = 10;
+
 let turn = 0;
 let weapon = "normal"
+let message = ""
+let end = false;
 
 toDataBoard = () => {
 
@@ -58,15 +63,50 @@ for (let i = 0; i < SIZE; i++) {
         k++;
         document.getElementById(`other${i}${j}`).style.backgroundColor = 'grey';
         document.getElementById(`other${i}${j}`).onclick = () => {
+            if (end) return;
             if (!turn) return;
             socket.emit(weapon, {x : i, y : j})
             switch (weapon) {
-                case "bomb": bomb.disabled = "disabled"; weapon = "normal"; break;
-                case "torpille" : torpille.disabled = "disabled"; weapon = "normal"; break;
+                case "bomb": 
+                    bomb.disabled = "disabled";
+                    weapon = "normal";
+                    bomb.classList.toggle('byellow');
+                    bomb.classList.toggle('bgrey'); 
+                    break;
+                case "torpille" : 
+                    torpille.disabled = "disabled"; 
+                    weapon = "normal";
+                    torpille.classList.toggle('byellow');
+                    torpille.classList.toggle('bgrey');
+                    break;
             }
         }
     }
 }
 
-bomb.onclick = () => weapon = "bomb"
-torpille.onclick = () => weapon = "torpille"
+bomb.onclick = () => {
+    if (end) return;
+    if (weapon === "torpille") {
+        torpille.classList.toggle("bwhite");
+        torpille.classList.toggle("byellow");
+    }
+    weapon = weapon === "bomb" ? "normal" : "bomb"
+    bomb.classList.toggle("bwhite");
+    bomb.classList.toggle("byellow");
+}
+
+torpille.onclick = () => {
+    if (end) return;
+    if (weapon === "bomb") {
+        bomb.classList.toggle("bwhite");
+        bomb.classList.toggle("byellow"); 
+    }
+    weapon = weapon === "torpille" ? "normal" : "torpille"
+    torpille.classList.toggle("bwhite");
+    torpille.classList.toggle("byellow");
+}
+
+inputMessage.addEventListener('change', value => {
+    socket.emit('newMessage', value.target.value);
+    inputMessage.value = "";
+})

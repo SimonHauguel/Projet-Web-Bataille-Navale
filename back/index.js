@@ -53,7 +53,14 @@ io.on('connection', socket => {
     }
 
     socket.on('disconnect', () => {
-        users = users.filter(e => e !== socket.id)
+        
+        if (users.length === 2) io.emit("disconnectGame");
+        users = [];
+    })
+
+    socket.on('newMessage', content => {
+        if (users.length != 2) return;
+        io.emit("message", content, socket.id)
     })
 
     socket.on('normal', coordonate => {
@@ -150,7 +157,7 @@ io.on('connection', socket => {
         let value = data[idboard].board[location.x][location.y]
         let rem = data[idboard].remains[value]
         if (rem <= 2) {
-            for (let i = 0; i <= 9; i++){
+            for (let i = 0; i <= 9; i++) {
                 for (let j = 0; j <= 9; j++) {
                     if (data[idboard].board[i][j] === value) {
                         socket.emit("success", {x : i, y : j})
@@ -186,11 +193,7 @@ io.on('connection', socket => {
         data[socket.id] = {
             board : board,
             remains : {
-                5 : 5,
-                4 : 4,
-                3 : 3,
-                2 : 2,
-                1 : 1,
+                5 : 5, 4 : 4, 3 : 3, 2 : 2, 1 : 1,
                 total : 15
             }
         }

@@ -14,6 +14,33 @@ socket.on("yourturn", () => {
     document.getElementById('turn').innerText = "Mon Tour"
 })
 
+socket.on('disconnectGame', () => {
+    Toastify({
+        text: "Votre adversaire s'est deconnecté :(",
+        duration: -1,
+        gravity: "top",
+        position: "right",
+        className: "popup",
+        style: {
+          background: "linear-gradient(to right, #D20434, #D2048B)",
+        }
+      }).showToast();
+
+    Toastify({
+        text: "Cliquer ici pour revenir au menu principal",
+        duration: -1,
+        gravity: "top",
+        position: "right",
+        className: "popup",
+        style: {
+          background: "linear-gradient(to right, #D20434, #D2048B)",
+        },
+        onClick : () => document.location.href = './index.html'
+    }).showToast();
+
+    end = true;
+})
+
 socket.on("notyourturn", () => {
     turn = 0;
     document.getElementById('turn').innerText = "En attente de votre adversaire"
@@ -40,6 +67,25 @@ socket.on("failure", coordonate => {
 socket.on("missed", coordonate => {
     document.getElementById(`own${coordonate.x}${coordonate.y}`).innerHTML = '<i class="circle fa fa-minus-circle"></i>'
 })
+
+socket.on("message", (content, id) => {
+    Toastify({
+        text: content,
+        duration: 5000,
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        className: "popup",
+        style: {
+          background: id === socket.id ? 
+              "linear-gradient(to right, #01C3AD, #04D563)" 
+            : "linear-gradient(to right, #D20434, #D2048B)",
+        }
+      }).showToast();
+})
+
 
 socket.on("win", id => {
     if (socket.id === id)
