@@ -4,6 +4,7 @@ const otherboard = document.getElementById('otherboard')
 const bomb = document.getElementById('bomb')
 const torpille = document.getElementById('torpille')
 
+const allColors = [ '#FFAF58', '#58FF5E', '#FF58E0', '#FF586C', '#FFF758']
 
 const boardPassed = document.location.search.slice(1)
 const SIZE = 10;
@@ -45,7 +46,15 @@ k = 0
 for (let i = 0; i < SIZE; i++) {
     for (let j = 0; j < SIZE; j++){
         let element = document.getElementById(`own${i}${j}`);
-        element.style.backgroundColor = boardPassed[k] !== "0" ? "red" : "green"
+
+        switch (boardPassed[k]) {
+            case "1": element.style.backgroundColor = allColors[0]; break;
+            case "2": element.style.backgroundColor = allColors[1]; break;
+            case "3": element.style.backgroundColor = allColors[2]; break;
+            case "4": element.style.backgroundColor = allColors[3]; break;
+            case "5": element.style.backgroundColor = allColors[4]; break;
+        }
+        
         k++;
         document.getElementById(`other${i}${j}`).style.backgroundColor = 'grey';
         document.getElementById(`other${i}${j}`).onclick = () => {
