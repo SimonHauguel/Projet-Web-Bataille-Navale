@@ -8,7 +8,6 @@ let   users   = []
 let   data    = {};
 let   turn    = 0;
 
-
 const withDir = rest => __dirname + rest;
 const pure = rest => path.resolve(withDir(rest));
 
@@ -39,8 +38,6 @@ io.on('connection', socket => {
             socket.emit("success", coordonate);
             data[idboard].remains.total--;
             data[idboard].remains[value]--;
-
-            if (data[idboard].remains.total === 0) console.log("game finished !");
         }
         
         else if (value === 0) {
@@ -51,6 +48,11 @@ io.on('connection', socket => {
         turn = turn ? 0 : 1;
         io.to(users[turn]).emit("yourturn")
         io.to(users[turn ? 0 : 1]).emit("notyourturn")
+
+        if (data[idboard].remains.total === 0) {
+            io.emit("win", socket.id);
+            users = [];
+        }
 
     })
 
@@ -85,6 +87,43 @@ io.on('connection', socket => {
         turn = turn ? 0 : 1;
         io.to(users[turn]).emit("yourturn")
         io.to(users[turn ? 0 : 1]).emit("notyourturn")
+
+        if (data[idboard].remains.total === 0) {
+            io.emit("win", socket.id);
+            users = [];
+        }
+
+    })
+
+    socket.on("torpille", location => {
+        
+        idboard = socket.id === users[0] ? users[1] : users[0];
+        if (socket.id !== users[turn]) return;
+
+        let value = data[idboard].board[location.x][location.y]
+        let rem = data[idboard].remains[value]
+        if (rem <= 2) {
+            for (let i = 0; i <= 9; i++){
+                for (let j = 0; j <= 9; j++) {
+                    if (data[idboard].board[i][j] === value) {
+                        socket.emit("success", {x : i, y : j})
+                        data[idboard].board[i][j] = 6;
+                    }    
+                }
+            }
+
+            data[idboard].remains[value] = 0;
+            data[idboard].remains.total -= rem;
+        }
+
+        turn = turn ? 0 : 1;
+        io.to(users[turn]).emit("yourturn")
+        io.to(users[turn ? 0 : 1]).emit("notyourturn")
+
+        if (data[idboard].remains.total === 0) {
+            io.emit("win", socket.id);
+            users = [];
+        }
     })
 
 

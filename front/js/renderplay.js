@@ -2,6 +2,8 @@ const ownboard = document.getElementById('ownboard');
 const otherboard = document.getElementById('otherboard')
 
 const bomb = document.getElementById('bomb')
+const torpille = document.getElementById('torpille')
+
 
 const boardPassed = document.location.search.slice(1)
 const SIZE = 10;
@@ -51,9 +53,11 @@ for (let i = 0; i < SIZE; i++) {
             socket.emit(weapon, {x : i, y : j})
             switch (weapon) {
                 case "bomb": bomb.disabled = "disabled"; weapon = "normal"; break;
+                case "torpille" : torpille.disabled = "disabled"; weapon = "normal"; break;
             }
         }
     }
 }
 
 bomb.onclick = () => weapon = "bomb"
+torpille.onclick = () => weapon = "torpille"

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultats !</title>
+</head>
+<body>
+    <div id="result"></div>
+    <button id="again">Rejouer ?</button>
+    <script>
+        const iswin = document.location.search.slice(1)
+        if (iswin === "1") document.getElementById('result').innerText = "GAGNE :)"
+        else document.getElementById('result').innerText = "PERDU :("
+        const button = document.getElementById('again')
+        button.onclick = () => {
+            
+        }
+    </script>
+</body>
+</html>

@@ -26,3 +26,9 @@ socket.on("success", coordonate => {
 socket.on("failure", coordonate => {
     document.getElementById(`other${coordonate.x}${coordonate.y}`).style.backgroundColor = "yellow";
 })
+
+socket.on("win", id => {
+    if (socket.id === id)
+        document.location.href = './endgame.html?1'
+    else document.location.href = './endgame.html?0'
+})
