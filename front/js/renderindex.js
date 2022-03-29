@@ -1,6 +1,10 @@
 const board = document.getElementById('board');
 const button = document.getElementById('button');
 const buttonsens = document.getElementById('sens');
+const inputName = document.getElementById('input-name');
+
+let username = "";
+
 const SIZE = 10;
 
 let size = 5;
@@ -48,9 +52,9 @@ for (let i = 0; i < SIZE; i++) {
                             duration: 5000,
                             gravity: "top",
                             position: "right",
-                            className: "popup",
+                            className: "popupindex",
                             style: {
-                              background: "linear-gradient(to right, #D20434, #D2048B)",
+                              background: "linear-gradient(to right, #47FD58, #8BFD47)",
                             }
                           }).showToast();
                           return;
@@ -74,7 +78,7 @@ for (let i = 0; i < SIZE; i++) {
                             duration: 5000,
                             gravity: "top",
                             position: "right",
-                            className: "popup",
+                            className: "popupindex",
                             style: {
                               background: "linear-gradient(to right, #D20434, #D2048B)",
                             }
@@ -157,7 +161,7 @@ button.onclick = () => {
             duration: 4000,
             gravity: "top",
             position: "right",
-            className: "popup",
+            className: "popupindex",
             style: {
               background: "linear-gradient(to right, #D20434, #D2048B)",
             }
@@ -165,9 +169,8 @@ button.onclick = () => {
           return;
     };
     temp = board.innerHTML;
-    document.location.href = "./play.html?" + flattenBoard();
+    document.location.href = "./play.html?"  + flattenBoard() + `${username}`;
 }
-
 
 buttonsens.onclick = () => {
     sens = sens === 1 ? 0 : 1;
@@ -184,6 +187,23 @@ document.addEventListener('keydown', event => {
             
         buttonsens.onclick();
     }
-    if (event.key === 'Enter') button.onclick();
+    if (event.key === ' ') button.onclick();
 });
 
+inputName.addEventListener('change', value => {
+    
+    if (value.target.value.length == 0) return;
+
+    username = value.target.value;
+    Toastify({
+        text: `Bonjour ${username} !`,
+        duration: 4000,
+        gravity: "top",
+        position: "right",
+        className: "popupindex",
+        style: {
+          background: "linear-gradient(to right, #F4F513, #F7F831)",
+        }
+      }).showToast();
+    inputName.value = "";
+})

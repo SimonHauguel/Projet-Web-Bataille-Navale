@@ -6,44 +6,52 @@ socket.on('foundgame', () => {
             document.getElementById(`other${i}${j}`).style.backgroundColor = '';
         }
     }
-    socket.emit("start", toDataBoard())
+    socket.emit("start", toDataBoard(), username);
 })
+
+socket.on('opponentName', name => {
+    opponentUserName = name;
+    othername.innerText = opponentUserName;
+})
+
 
 socket.on("yourturn", () => { 
     turn = 1; 
-    document.getElementById('turn').innerText = "Mon Tour"
+    document.getElementById('turn').innerText = "Votre tour"
 })
 
 socket.on('disconnectGame', () => {
-    Toastify({
-        text: "Votre adversaire s'est deconnecté :(",
-        duration: -1,
-        gravity: "top",
-        position: "right",
-        className: "popup",
-        style: {
-          background: "linear-gradient(to right, #D20434, #D2048B)",
-        }
-      }).showToast();
 
     Toastify({
         text: "Cliquer ici pour revenir au menu principal",
         duration: -1,
         gravity: "top",
         position: "right",
-        className: "popup",
+        className: "popupplay",
         style: {
-          background: "linear-gradient(to right, #D20434, #D2048B)",
+          background: "linear-gradient(to right, #F4F513, #F7F831)",
         },
         onClick : () => document.location.href = './index.html'
     }).showToast();
+
+    Toastify({
+        text: "Votre adversaire s'est deconnecté :(",
+        duration: -1,
+        gravity: "top",
+        position: "right",
+        className: "popupplay",
+        style: {
+          background: "linear-gradient(to right, #F4F513, #F7F831)",
+        }
+      }).showToast();
+
 
     end = true;
 })
 
 socket.on("notyourturn", () => {
     turn = 0;
-    document.getElementById('turn').innerText = "En attente de votre adversaire"
+    document.getElementById('turn').innerText = "Tour adverse"
 })
 
 socket.on("destroy", (coordonate, n) => {
@@ -77,7 +85,7 @@ socket.on("message", (content, id) => {
         gravity: "top",
         position: "right",
         stopOnFocus: true,
-        className: "popup",
+        className: "popupplay",
         style: {
           background: id === socket.id ? 
               "linear-gradient(to right, #01C3AD, #04D563)" 
@@ -89,6 +97,58 @@ socket.on("message", (content, id) => {
 
 socket.on("win", id => {
     if (socket.id === id)
-        document.location.href = './endgame.html?1'
-    else document.location.href = './endgame.html?0'
+        {
+            Toastify({
+                text: "Cliquer ici pour revenir au menu principal",
+                duration: -1,
+                gravity: "top",
+                position: "right",
+                className: "popupplay",
+                style: {
+                  background: "linear-gradient(to right, #F4F513, #F7F831)",
+                },
+                onClick : () => document.location.href = './index.html'
+            }).showToast();
+        
+            Toastify({
+                text: "Vous avez gagné (mais prend pas la confiance)",
+                duration: -1,
+                gravity: "top",
+                position: "right",
+                className: "popupplay",
+                style: {
+                  background: "linear-gradient(to right, #F4F513, #F7F831)",
+                }
+              }).showToast();
+        
+        
+            end = true;
+        }
+
+    else {
+        Toastify({
+            text: "Cliquer ici pour revenir au menu principal",
+            duration: -1,
+            gravity: "top",
+            position: "right",
+            className: "popupplay",
+            style: {
+              background: "linear-gradient(to right, #F4F513, #F7F831)",
+            },
+            onClick : () => document.location.href = './index.html'
+        }).showToast();
+    
+        Toastify({
+            text: "Vous avez perdu (un peu nul)",
+            duration: -1,
+            gravity: "top",
+            position: "right",
+            className: "popupplay",
+            style: {
+              background: "linear-gradient(to right, #F4F513, #F7F831)",
+            }
+          }).showToast();
+    
+        end = true;
+    }
 })

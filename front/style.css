@@ -51,9 +51,16 @@ input[type="text"]:focus {
     font-family: 'Rubik', sans-serif;
 }
 
-.popup {
+.popupindex {
     font-family: 'Rubik', sans-serif;
     font-style: italic;
+    margin-top: 3%;
+}
+
+.popupplay {
+    font-family: 'Rubik', sans-serif;
+    font-style: italic;
+    margin-top: 44%;
 }
 
 #board {
@@ -84,6 +91,7 @@ body {
 }
 
 #container {
+    padding-top: 1.5%;
     display: flex;
     justify-content: space-around;
 }
@@ -184,4 +192,35 @@ body {
     top: 35%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+
+#nav {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#input-name {
+    width: 15%;
+}
+
+#ownname, #othername {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#weapons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#bomb, #torpille {
+    width: 150px;
+    height: 150px;
+}
+
+#turn {
+    font-size: 24px;
+    text-align: center;
 }

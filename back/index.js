@@ -1,5 +1,4 @@
 const express = require('express');
-const { toNamespacedPath } = require('path');
 const app     = express();
 const http    = require('http').createServer(app);
 const io      = require('socket.io')(http);
@@ -189,7 +188,8 @@ io.on('connection', socket => {
     })
 
 
-    socket.on('start', board => {
+    socket.on('start', (board, username) => {
+        idboard = socket.id === users[0] ? users[1] : users[0];
         data[socket.id] = {
             board : board,
             remains : {
@@ -199,6 +199,9 @@ io.on('connection', socket => {
         }
 
         defaultBoard[socket.id] = copy(board);
+        
+        io.to(idboard).emit('opponentName', username);
+
     })
 });
 

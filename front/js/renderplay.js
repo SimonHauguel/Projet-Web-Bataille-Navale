@@ -1,6 +1,9 @@
 const ownboard = document.getElementById('ownboard');
 const otherboard = document.getElementById('otherboard')
 
+const ownname = document.getElementById('ownname');
+const othername = document.getElementById('othername');
+
 const bomb = document.getElementById('bomb')
 const torpille = document.getElementById('torpille')
 
@@ -8,13 +11,24 @@ const inputMessage = document.getElementById("inputMessage");
 
 const allColors = [ '#FFAF58', '#58FF5E', '#FF58E0', '#FF586C', '#FFF758']
 
-const boardPassed = document.location.search.slice(1)
+const url = document.location.search.slice(1)
+
+let boardPassed = "";
+for (let i = 0; i < 100; i++) boardPassed += url[i];
+
+let username = url.slice(100);
+let opponentUserName = "En attente d'un adversaire...";
+username = username.length ? username : "Invité" + Math.floor(Math.random() * 100000);
+ownname.innerText = username;
+othername.innerText = opponentUserName;
+
 const SIZE = 10;
 
 let turn = 0;
 let weapon = "normal"
 let message = ""
 let end = false;
+
 
 toDataBoard = () => {
 
